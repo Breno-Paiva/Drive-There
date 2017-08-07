@@ -1,6 +1,5 @@
 # 🏎️ Drive-There 🏎️
-**Car Rentals**
-"A Lifion Developer Case Study by Breno Paiva"
+**CAR RENTALS** - A Lifion Developer Case Study by [Breno Paiva](www.breno.space)
 ******
 ##Data Modeling
 
