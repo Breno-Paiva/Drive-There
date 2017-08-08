@@ -14,6 +14,7 @@ class VehiclesController < ApplicationController
         reservations
     SQL
 
+    #test cases
     request_start_date = '2017-07-10'
     request_end_date = '2017-07-29'
 
@@ -52,9 +53,6 @@ class VehiclesController < ApplicationController
     GROUP BY car_type, make, model
     ORDER BY days_rented DESC
        LIMIT 5
-
     SQL
-
-    debugger
   end
 end
