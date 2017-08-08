@@ -1,0 +1,34 @@
+<h1> - vehicles page - </h1>
+
+
+<h2>vehicles</h2>
+<% @vehicles.rows.each do |row| %>
+  <%= row %>
+  <br>
+  <br>
+<%end%>
+
+<h2>-------</h2>
+
+<h2>reservations</h2>
+<% @reservations.rows.each do |row| %>
+  <%= row %>
+  <br>
+  <br>
+<% end %>
+<h2>-------</h2>
+
+<h2>sub query</h2>
+<% @sub_query.each do |row| %>
+  <%= row %>
+  <br>
+  <br>
+<% end %>
+<h2>-------</h2>
+
+<h2>query</h2>
+<% @query.rows.each do |row| %>
+  <%= row %>
+  <br>
+  <br>
+<% end %>

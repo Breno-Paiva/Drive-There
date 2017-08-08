@@ -9,4 +9,9 @@
 Vehicle.delete_all
 Reservation.delete_all
 
-Vehicle.create!(location: "NYC", car_type: "Compact", make: "Honca", model: "Fit", year: 2008, rental_cost: 85)
+x = Vehicle.create!(location: "NYC", car_type: "Compact", make: "Honda", model: "Fit", year: 2008, rental_cost: 85)
+Reservation.create!(start_date: "2017-07-02", end_date: "2017-07-08", vehicle_id: x.id)
+Reservation.create!(start_date: "2017-07-15", end_date: "2017-07-19", vehicle_id: x.id)
+Reservation.create!(start_date: "2017-07-22", end_date: "2017-07-27", vehicle_id: x.id)
+Vehicle.create!(location: "NYC", car_type: "Compact", make: "Honda", model: "Civic", year: 2008, rental_cost: 80)
+Vehicle.create!(location: "NYC", car_type: "Compact", make: "Toyota", model: "Camry", year: 2008, rental_cost: 75)
