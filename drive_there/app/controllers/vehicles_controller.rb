@@ -13,35 +13,31 @@ class VehiclesController < ApplicationController
         reservations
     SQL
 
-    start_d = '2017-07-10'
-    end_d = '2017-07-29'
-    attrs = { start_day: start_d, end_day: end_d }
+    request_start_date = '2017-07-10'
+    request_end_date = '2017-07-29'
 
     @sub_query = ActiveRecord::Base.connection.exec_query(<<-SQL)
       SELECT *
       FROM vehicles
       JOIN reservations ON vehicles.id = reservations.vehicle_id
       WHERE
-        (reservations.start_date > '#{start_d}' AND reservations.start_date < '#{end_d}') OR
-        (reservations.end_date > '#{start_d}' And reservations.end_date < '#{end_d}')
+        (reservations.start_date > '#{request_start_date}' AND reservations.start_date < '#{request_end_date}') OR
+        (reservations.end_date > '#{request_start_date}' And reservations.end_date < '#{request_end_date}')
     SQL
-  
+
     @query = ActiveRecord::Base.connection.exec_query(<<-SQL)
-      SELECT
-        *
-      FROM
-        vehicles
+      SELECT *
+      FROM vehicles
       WHERE
         vehicles.id NOT IN (
           SELECT vehicles.id
           FROM vehicles
           JOIN reservations ON vehicles.id = reservations.vehicle_id
           WHERE
-          (reservations.start_date > '#{start_d}' AND reservations.start_date < '#{end_d}') OR
-          (reservations.end_date > '#{start_d}' And reservations.end_date < '#{end_d}')
+          (reservations.start_date > '#{request_start_date}' AND reservations.start_date < '#{request_end_date}') OR
+          (reservations.end_date > '#{request_start_date}' And reservations.end_date < '#{request_end_date}')
         )
     SQL
-
   end
 end
 
