@@ -1,4 +1,4 @@
-# 🏎️ Drive-There 🏎️
+# Drive-There
 **CAR RENTALS** - A Lifion Developer Case Study by [Breno Paiva](http://www.breno.space "Breno•Space")
 ******
 ## Data Modeling
@@ -6,7 +6,7 @@ ERD model for DriveThere database.
 ![erd]
 
 ## Querying
-Query using ruby on rails to get all rental vehicles which are available on a given start and end date.
+SQL query using ruby on rails to get all rental vehicles which are available on a given start and end date.
 ```ruby
 # ruby
 @query = ActiveRecord::Base.connection.exec_query(<<-SQL)
@@ -25,7 +25,7 @@ SQL
 ```
 
 ## Algorithm
-A SQL query would be the best way to get the top 5 categories and make/models of most frequently rented out cars.
+A SQL query could get the top 5 categories and make/models of most frequently rented out cars.
 ```sql
   -- sql
   SELECT car_type,
@@ -38,9 +38,10 @@ GROUP BY car_type, make, model
 ORDER BY days_rented DESC
    LIMIT 5
 ```
-- count the number of days for each reservation
-- organize data in groups based on the category and make/model
-- add the the number of days in reach reservation for the total number of days a car has been rented
-- organize the results in descending order and return the top 5 results
+The process of reaching a solution would involve:
+- counting the number of days for each reservation
+- organizing the data in groups based on the category and make/model
+- adding the the number of days in each reservation for the total number of days a car has been rented
+- sorting the results in descending order of days rented and returning the top 5 results
 
 [erd]: ./drive_there_erd.png
