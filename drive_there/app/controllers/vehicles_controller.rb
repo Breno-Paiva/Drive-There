@@ -41,5 +41,20 @@ class VehiclesController < ApplicationController
                   OR (reservations.end_date > '#{request_start_date}'
                      And reservations.end_date < '#{request_end_date}'))
     SQL
+
+    @algorithm = ActiveRecord::Base.connection.exec_query(<<-SQL)
+      SELECT car_type,
+            make,
+            model,
+            SUM((JulianDay(end_date) - JulianDay(start_date))) AS days_rented
+        FROM vehicles
+        JOIN reservations ON vehicles.id = reservations.vehicle_id
+    GROUP BY car_type, make, model
+    ORDER BY days_rented DESC
+       LIMIT 5
+
+    SQL
+
+    debugger
   end
 end

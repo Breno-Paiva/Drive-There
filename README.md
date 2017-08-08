@@ -4,6 +4,7 @@
 ## Data Modeling
 
 ## Querying
+Sample query if application was built with ruby on rails
 ```ruby
 # ruby
 @query = ActiveRecord::Base.connection.exec_query(<<-SQL)
@@ -22,3 +23,15 @@ SQL
 ```
 
 ## Algorithm
+The most practical way to solve this problem would be to make a SQL query that does all the work for you as such:
+```sql
+SELECT car_type,
+      make,
+      model,
+      SUM((JulianDay(end_date) - JulianDay(start_date))) AS days_rented
+  FROM vehicles
+  JOIN reservations ON vehicles.id = reservations.vehicle_id
+GROUP BY car_type, make, model
+ORDER BY days_rented DESC
+ LIMIT 5
+```
