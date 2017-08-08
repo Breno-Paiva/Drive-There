@@ -38,4 +38,4 @@ ORDER BY days_rented DESC
    LIMIT 5
 ```
 
-[erd]: "./drive_there_erd.jpeg"
+[erd]: "./drive_there_erd.png"
