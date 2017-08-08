@@ -2,6 +2,7 @@
 **CAR RENTALS** - A Lifion Developer Case Study by [Breno Paiva](http://www.breno.space "Breno•Space")
 ******
 ## Data Modeling
+![erd]
 
 ## Querying
 Sample query if application was built with ruby on rails
@@ -25,13 +26,16 @@ SQL
 ## Algorithm
 The most practical way to solve this problem would be to make a SQL query that does all the work for you as such:
 ```sql
-SELECT car_type,
-      make,
-      model,
-      SUM((JulianDay(end_date) - JulianDay(start_date))) AS days_rented
-  FROM vehicles
-  JOIN reservations ON vehicles.id = reservations.vehicle_id
+  -- sql
+  SELECT car_type,
+         make,
+         model,
+         SUM((JulianDay(end_date) - JulianDay(start_date))) AS days_rented
+    FROM vehicles
+    JOIN reservations ON vehicles.id = reservations.vehicle_id
 GROUP BY car_type, make, model
 ORDER BY days_rented DESC
- LIMIT 5
+   LIMIT 5
 ```
+
+[erd]: "./drive_there_erd.jpeg"
